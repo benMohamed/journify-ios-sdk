@@ -7,7 +7,7 @@ let package = Package(
     name: "Journify",
     platforms: [
         .macOS("10.15"),
-        .iOS("13.0"),
+        .iOS(.v12)
         .tvOS("11.0"),
         .watchOS("7.1")
     ],
