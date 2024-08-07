@@ -7,7 +7,7 @@ let package = Package(
     name: "Journify",
     platforms: [
         .macOS("10.15"),
-        .iOS("13.0"),
+        .iOS("12.0")
         .tvOS("11.0"),
         .watchOS("7.1")
     ],
@@ -23,7 +23,7 @@ let package = Package(
         .package(
             name: "Sovran",
             url: "https://github.com/segmentio/Sovran-Swift.git",
-            from: "1.0.3"
+            .branch("main")
         )
     ],
     targets: [
