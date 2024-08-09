@@ -22,7 +22,7 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(
             name: "Sovran",
-            url: "https://github.com/segmentio/Sovran-Swift.git",
+            url: "https://github.com/benMohamed/Sovran-Swift",
             .branch("main")
         )
     ],
