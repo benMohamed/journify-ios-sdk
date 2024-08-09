@@ -55,7 +55,11 @@ internal class OutputFileStream {
             if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, *) {
                 _ = try? fileHandle?.seekToEnd()
             } else if #available(tvOS 13.0, *) {
-                try? fileHandle?.seek(toOffset: .max)
+                if #available(iOS 13.0, *) {
+                    try? fileHandle?.seek(toOffset: .max)
+                } else {
+                    try? fileHandle?.seekToEnd()
+                }
             } else {
                 // unsupported
                 throw OutputStreamError.unableToOpen(fileURL.path)
@@ -90,7 +94,7 @@ internal class OutputFileStream {
         do {
             let existing = fileHandle
             fileHandle = nil
-            if #available(tvOS 13.0, *) {
+            if #available(iOS 13.0, tvOS 13.0, *) {
                 try existing?.synchronize() // this might be overkill, but JIC.
                 try existing?.close()
             } else {

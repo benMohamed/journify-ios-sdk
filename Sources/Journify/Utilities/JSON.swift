@@ -539,8 +539,15 @@ extension Dictionary where Key == String, Value == Any {
         for (key, value) in self {
             if let stringValue = value as? String {
                 // If the value is a String, hash it using SHA-256
-                let hashedValue = SHA256.hash(data: Data(stringValue.utf8)).compactMap { String(format: "%02x", $0) }.joined()
-                hashedDict[key] = hashedValue
+                if #available(iOS 13.0, tvOS 13.0, *) {
+                    let hashedValue = SHA256.hash(data: Data(stringValue.utf8))
+                        .compactMap { String(format: "%02x", $0) }
+                        .joined()
+                    hashedDict[key] = hashedValue
+                } else {
+                    // Fallback for iOS 12.0 or earlier
+                    // TODO: You might need to use a third-party library like CommonCrypto for SHA-256
+                }
             } else {
                 // If the value is not a String leave it unchanged
                 hashedDict[key] = value
