@@ -52,13 +52,11 @@ internal class OutputFileStream {
         if fileHandle != nil { return }
         do {
             fileHandle = try FileHandle(forWritingTo: fileURL)
-            if #available(iOS 13.4, macOS 10.15.4, tvOS 13.4, *) {
-                _ = try? fileHandle?.seekToEnd()
-            } else if #available(iOS 13.0, tvOS 13.0, *) {
-                try? fileHandle?.seek(toOffset: .max)
-            } else {
-                try? fileHandle?.seekToEnd()
-            }
+            if #available(iOS 13.0, tvOS 13.0, *) {
+               try? fileHandle?.seek(toOffset: .max)
+           } else {
+               _ = try? fileHandle?.seekToEnd()
+           }
         } catch {
             throw OutputStreamError.unableToOpen(fileURL.path)
         }
