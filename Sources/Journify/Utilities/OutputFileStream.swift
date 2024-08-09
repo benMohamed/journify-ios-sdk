@@ -55,7 +55,7 @@ internal class OutputFileStream {
             if #available(iOS 13.0, tvOS 13.0, *) {
                try? fileHandle?.seek(toOffset: .max)
            } else {
-               _ = try? fileHandle?.seekToEnd()
+               _ = fileHandle?.seekToEndOfFile()
            }
         } catch {
             throw OutputStreamError.unableToOpen(fileURL.path)
