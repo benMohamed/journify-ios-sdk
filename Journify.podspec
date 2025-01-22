@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
   spec.description  = "JournifySDK is a Swift library for integrating event tracking and analytics into your iOS application.
                    It provides an easy-to-use interface for developers to add similar functionality to their projects"
 
-  spec.homepage     = "https://github.com/journifyio/journify-ios-sdk"
+  spec.homepage     = "https://github.com/benMohamed/journify-ios-sdk"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
